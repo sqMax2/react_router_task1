@@ -22,3 +22,12 @@
 .active {
   color: green;
 }
+
+.alert-404 {
+  color: red;
+  font-size: 3rem;
+}
+
+.alert-text {
+  font-size: 2rem;
+}
