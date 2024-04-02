@@ -13,11 +13,10 @@ export default function NotFound() {
 
   return (
     <>
-      <div className="alert-404">404</div>;
+      <div className="alert-404">404</div>
       <div className="alert-text">
         Page not found. You will be redirected to previous page.
       </div>
-      ;
     </>
   );
 }
