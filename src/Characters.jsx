@@ -1,12 +1,12 @@
-export default function Characters() {
-  fetch("../public/characters.json")
+import Category from "./Category";
 
-    .then((response) => response.json())
-    .then((obj) => console.log(obj));
+export default function Characters() {
+  
 
   return (
     <div>
       <h1>Characters</h1>
+      <Category link="../public/characters.json" displayField="name" navField="id" />
     </div>
   );
 }
