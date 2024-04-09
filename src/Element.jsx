@@ -1,11 +1,9 @@
-export default function Element({link, navField}) {
-	fetch("../public/characters.json")
-  
-	  .then((response) => response.json())
-	  .then((obj) => console.log(obj));
+export default function Element({link, navField, ...rest}) {
+
   
 	return (
 	  <div>
+		Element {link} {navField}
 
 	  </div>
 	);
