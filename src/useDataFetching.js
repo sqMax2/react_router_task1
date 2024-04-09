@@ -13,7 +13,7 @@ export default function useDataFetching(url){
     fetchData();
   }, [url]);
 
-  const memoizedData = useMemo(() => data, [data]);
+  const memoizedData = useMemo(() => data, [data, url]);
 
   return memoizedData;
 }

@@ -4,9 +4,11 @@ import { useEffect } from "react";
 
 export default function Category({ link, displayField, navField, ...rest }) {
   const [data, setData] = useState([]);
+  const dataFetched = useDataFetching(link);
 
   useEffect(() => {
-    setData(useDataFetching(link));
+    setData(dataFetched);
+	console.log(dataFetched);
   }, []);
 
   return (
@@ -23,7 +25,7 @@ export default function Category({ link, displayField, navField, ...rest }) {
       ) : (
         <div className="alert-text">Loading...</div>
       )}
-      ;
+      
     </>
   );
 }
