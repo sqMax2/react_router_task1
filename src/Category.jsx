@@ -1,21 +1,24 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import useDataFetching from "./useDataFetching";
 import { useEffect } from "react";
 
 export default function Category({ link, displayField, navField, ...rest }) {
   const [data, setData] = useState([]);
   const dataFetched = useDataFetching(link);
+  
 
   useEffect(() => {
     setData(dataFetched);
 	console.log(dataFetched);
   }, []);
 
+  const memoizedData = useMemo(() => data, [data]);
+
   return (
     <>
-      {data ? (
+      {damemoizedDatata ? (
         <ul>
-          {data.map((item) => (
+          {memoizedData.map((item) => (
             <li key={item[navField]}>
               <img src={item["image"]} alt="" />
               {item[displayField]}

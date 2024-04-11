@@ -1,19 +1,13 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function useDataFetching(url){
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(url);
-      const result = await response.json();
-      setData(result);
-    };
-
-    fetchData();
+    fetch(url)
+    .then(response => response.json())
+    .then(result => setData(result))
   }, [url]);
 
-  const memoizedData = useMemo(() => data, [data, url]);
-
-  return memoizedData;
+  return data;
 }
