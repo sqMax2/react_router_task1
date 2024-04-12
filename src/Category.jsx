@@ -17,11 +17,11 @@ export default function Category({ link, displayField, navField, ...rest }) {
   return (
     <>
       {memoizedData ? (
-        <ul>
+        <ul className="category-list">
           {memoizedData.map((item) => (
             <li key={item[navField]}>
               {item["image"]?<img src={item["image"]} alt="" />:""}
-              {item[displayField]}
+              <div>{item[displayField]}</div>
             </li>
           ))}
         </ul>

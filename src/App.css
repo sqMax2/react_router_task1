@@ -2,8 +2,6 @@
   text-align: center;
 }
 
-
-
 .App-header {
   background-color: #282c34;
   height: 3rem;
@@ -39,4 +37,19 @@
 
 .alert-text {
   font-size: 2rem;
+}
+
+.category-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  
+  li{
+    display: grid;
+    grid-column: 1/span 2;
+    grid-template-columns: subgrid;
+  }
+  img {
+    max-width: 100px;
+  }
 }
