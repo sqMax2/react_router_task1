@@ -10,17 +10,17 @@ export default function Category({ link, displayField, navField, ...rest }) {
   useEffect(() => {
     setData(dataFetched);
 	console.log(dataFetched);
-  }, []);
+  }, [dataFetched]);
 
   const memoizedData = useMemo(() => data, [data]);
 
   return (
     <>
-      {damemoizedDatata ? (
+      {memoizedData ? (
         <ul>
           {memoizedData.map((item) => (
             <li key={item[navField]}>
-              <img src={item["image"]} alt="" />
+              {item["image"]?<img src={item["image"]} alt="" />:""}
               {item[displayField]}
             </li>
           ))}
