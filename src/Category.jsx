@@ -10,7 +10,6 @@ export default function Category({ link, displayField, navField, ...rest }) {
 
   useEffect(() => {
     setData(dataFetched);
-	  console.log(dataFetched);
   }, [dataFetched]);
 
   const memoizedData = useMemo(() => data, [data]);
