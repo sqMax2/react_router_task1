@@ -42,13 +42,9 @@
 .category-list {
   list-style: none;
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: repeat (6, 200px) ;
   
-  li{
-    display: grid;
-    grid-column: 1/span 2;
-    grid-template-columns: subgrid;
-  }
+
   img {
     max-width: 100px;
   }
