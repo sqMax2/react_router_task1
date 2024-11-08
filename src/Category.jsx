@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 import useDataFetching from "./useDataFetching";
 import { useEffect } from "react";
 
@@ -9,7 +10,7 @@ export default function Category({ link, displayField, navField, ...rest }) {
 
   useEffect(() => {
     setData(dataFetched);
-	console.log(dataFetched);
+	  console.log(dataFetched);
   }, [dataFetched]);
 
   const memoizedData = useMemo(() => data, [data]);
@@ -20,8 +21,10 @@ export default function Category({ link, displayField, navField, ...rest }) {
         <ul className="category-list">
           {memoizedData.map((item) => (
             <li key={item[navField]}>
-              {item["image"]?<img src={item["image"]} alt="" />:""}
-              <div>{item[displayField]}</div>
+              <Link to={`${item[navField]}`}>
+                {item["image"]?<img src={item["image"]} alt="" />:""}
+                <div>{item[displayField]}</div>
+              </Link>
             </li>
           ))}
         </ul>
