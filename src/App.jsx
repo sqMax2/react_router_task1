@@ -33,14 +33,17 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/characters" element={<Characters />}>
+          <Route path="/characters">
             <Route path=":id" element={<Character />} />
+            <Route index element={<Characters />} />
           </Route>
-          <Route path="/episodes" element={<Episodes />}>
+          <Route path="/episodes">
             <Route path=":id" element={<Episode />} />
+             <Route index element={<Episodes />} />
           </Route>
-          <Route path="/locations" element={<Locations />}>
+          <Route path="/locations">
             <Route path=":id" element={<Location />} />
+            <Route index element={<Locations />} />
           </Route>
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
