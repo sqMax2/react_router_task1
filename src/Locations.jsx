@@ -5,7 +5,7 @@ export default function Locations() {
 
   return (
     <div>
-      <h1>Characters</h1>
+      <h1>Locations</h1>
       <Category link="/location.json" displayField="name" navField="id" />
     </div>
   );

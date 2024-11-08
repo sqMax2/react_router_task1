@@ -39,7 +39,7 @@ function App() {
           </Route>
           <Route path="/episodes">
             <Route path=":id" element={<Episode />} />
-             <Route index element={<Episodes />} />
+            <Route index element={<Episodes />} />
           </Route>
           <Route path="/locations">
             <Route path=":id" element={<Location />} />
