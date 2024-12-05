@@ -45,7 +45,7 @@ function App() {
             <Route path=":id" element={<Location />} />
             <Route index element={<Locations />} />
           </Route>
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </div>
