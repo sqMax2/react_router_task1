@@ -40,12 +40,19 @@
 }
 
 .category-list {
+  padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat (6, 200px) ;
+  grid-template-columns: repeat (2, 200px) ;
   
 
   img {
     max-width: 100px;
   }
+}
+
+.sort {
+  display: inline-block;
+  font-size: 0.8em;
+  cursor: pointer;
 }

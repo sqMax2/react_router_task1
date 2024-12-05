@@ -1,21 +1,47 @@
-import { useMemo, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
-import useDataFetching from "./useDataFetching";
+import { useMemo, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import useDataFetching from "./useDataFetching";
+import Sorting from "./Sorting";
+
 
 export default function Category({ link, displayField, navField, ...rest }) {
   const [data, setData] = useState([]);
   const dataFetched = useDataFetching(link);
+  const [asc, setAsc] = useState(true);
   
+  function compare(a, b) {
+    if (Date.parse(a['created']) < Date.parse(b['created'])) {
+      return -1;
+    }
+    if (Date.parse(a['created']) > Date.parse(b['created'])) {
+      return 1;
+    }
+    return 0;
+  }
+
+  const toggleSort = useCallback(() => {
+    setData((prevData) => prevData.reverse());
+    setAsc((prevOrder) => !prevOrder);
+  }, [asc]);
 
   useEffect(() => {
-    setData(dataFetched);
+    // setData(dataFetched.sort(compare));
+    
+    const tempData = dataFetched;
+    console.log(tempData);
+    if (typeof tempdata === "Array") {
+      tempData.sort();
+    }
+    setData(tempData);
+    setAsc(true);
   }, [dataFetched]);
 
   const memoizedData = useMemo(() => data, [data]);
 
   return (
     <>
+      <Sorting sortFn={toggleSort} sortDirection={asc} />
       {memoizedData ? (
         <ul className="category-list">
           {memoizedData.map((item) => (
