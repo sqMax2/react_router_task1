@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import useDataFetching from "./useDataFetching";
@@ -36,14 +36,12 @@ export default function Category({ link, displayField, navField, ...rest }) {
     setAsc(true);
   }, [dataFetched]);
 
-  const memoizedData = useMemo(() => data, [data]);
-
   return (
     <>
       <Sorting sortFn={toggleSort} sortDirection={asc} />
-      {memoizedData ? (
+      {data ? (
         <ul className="category-list">
-          {memoizedData.map((item) => (
+          {data.map((item) => (
             <li key={item[navField]}>
               <Link to={`${item[navField]}`}>
                 {item["image"]?<img src={item["image"]} alt="" />:""}
