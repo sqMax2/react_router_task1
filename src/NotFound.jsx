@@ -7,7 +7,7 @@ export default function NotFound() {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate(Object.values(params)[0] === '404'?-2:-1);
+      navigate(params['*'] === '404'?-2:-1);
     }, 3000);
   }, []);
 
