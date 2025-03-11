@@ -20,10 +20,10 @@ export default function Category({ link, displayField, navField, ...rest }) {
     return 0;
   }
 
-  const toggleSort = useCallback(() => {
+  const toggleSort = () => {
     setData((prevData) => prevData.reverse());
     setAsc((prevOrder) => !prevOrder);
-  }, [asc]);
+  };
 
   useEffect(() => {
     // setData(dataFetched.sort(compare));
