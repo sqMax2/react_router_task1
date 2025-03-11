@@ -29,7 +29,6 @@ export default function Category({ link, displayField, navField, ...rest }) {
     // setData(dataFetched.sort(compare));
     
     const tempData = dataFetched;
-    console.log(tempData);
     if (Array.isArray(tempData)) {
       tempData.sort();
     }
