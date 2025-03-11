@@ -30,7 +30,7 @@ export default function Category({ link, displayField, navField, ...rest }) {
     
     const tempData = dataFetched;
     console.log(tempData);
-    if (typeof tempdata === "Array") {
+    if (Array.isArray(tempData)) {
       tempData.sort();
     }
     setData(tempData);
