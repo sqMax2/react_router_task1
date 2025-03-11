@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function NotFound() {
   const navigate = useNavigate();
+  const params = useParams();
 
   useEffect(() => {
     setTimeout(() => {
-      // navigate("/");
-      navigate(-1);
+      navigate(Object.values(params)[0] === '404'?-2:-1);
     }, 3000);
   }, []);
 
