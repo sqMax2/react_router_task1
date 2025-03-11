@@ -9,7 +9,7 @@ export default function Element({link, navField, ...rest}) {
 	const params = useParams();
 	
 	useEffect(() => {
-		setData(dataFetched?dataFetched.find((element) => element.id == params.id):null);
+		setData(dataFetched?dataFetched.find((element) => parseInt(element.id) === parseInt(params.id)):null);
 	  }, [dataFetched]);
 	
 	
