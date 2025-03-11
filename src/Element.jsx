@@ -11,7 +11,6 @@ export default function Element({link, navField, ...rest}) {
 	
 	useEffect(() => {
 		const tempData = Array.isArray(dataFetched)?dataFetched.find((element) => Number(element.id) === Number(params.id)):null;
-		console.log(tempData)
 		if (typeof(tempData) === "undefined") navigate('/404');
 		setData(tempData);
 	  }, [dataFetched, params]);
