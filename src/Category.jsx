@@ -10,24 +10,12 @@ export default function Category({ link, displayField, navField, ...rest }) {
   const dataFetched = useDataFetching(link);
   const [asc, setAsc] = useState(true);
   
-  function compare(a, b) {
-    if (Date.parse(a['created']) < Date.parse(b['created'])) {
-      return -1;
-    }
-    if (Date.parse(a['created']) > Date.parse(b['created'])) {
-      return 1;
-    }
-    return 0;
-  }
-
   const toggleSort = () => {
     setData((prevData) => prevData.reverse());
     setAsc((prevOrder) => !prevOrder);
   };
 
   useEffect(() => {
-    // setData(dataFetched.sort(compare));
-    
     const tempData = dataFetched;
     if (Array.isArray(tempData)) {
       tempData.sort();
