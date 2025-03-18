@@ -8,6 +8,9 @@ import Episode from "./Episode";
 import Episodes from "./Episodes";
 import Locations from "./Locations";
 import Location from "./Location";
+import { AuthProvider } from "./context/ContextAuthProvider";
+import { PrivateRoute } from "./component/PrivateRoute";
+import { Login } from "./Login";
 
 function App() {
   return (
@@ -31,22 +34,25 @@ function App() {
         </nav>
       </header>
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/characters">
-            <Route path=":id" element={<Character />} />
-            <Route index element={<Characters />} />
-          </Route>
-          <Route path="/episodes">
-            <Route path=":id" element={<Episode />} />
-            <Route index element={<Episodes />} />
-          </Route>
-          <Route path="/locations">
-            <Route path=":id" element={<Location />} />
-            <Route index element={<Locations />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/characters">
+              <Route path=":id" element={<PrivateRoute><Character /></PrivateRoute>} />
+              <Route index element={<PrivateRoute><Characters /></PrivateRoute>} />
+            </Route>
+            <Route path="/episodes">
+              <Route path=":id" element={<PrivateRoute><Episodes /></PrivateRoute>} />
+              <Route index element={<PrivateRoute><Episodes /></PrivateRoute>} />
+            </Route>
+            <Route path="/locations">
+              <Route path=":id" element={<PrivateRoute><Location /></PrivateRoute>} />
+              <Route index element={<PrivateRoute><Locations /></PrivateRoute>} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AuthProvider>
       </main>
     </div>
   );
