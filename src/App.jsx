@@ -1,16 +1,18 @@
 import { NavLink, Routes, Route } from "react-router-dom";
 import "./App.css";
-import NotFound from "./NotFound";
-import Home from "./Home";
-import Characters from "./Characters";
-import Character from "./Character";
-import Episode from "./Episode";
-import Episodes from "./Episodes";
-import Locations from "./Locations";
-import Location from "./Location";
 import { AuthProvider } from "./context/ContextAuthProvider";
 import { PrivateRoute } from "./component/PrivateRoute";
-import { Login } from "./Login";
+import { lazy } from "react";
+
+const NotFound = lazy(() => import("./NotFound"));
+const Home = lazy(() => import("./Home"));
+const Login = lazy(() => import("./Login"));
+const Episode = lazy(() => import("./Episode"));
+const Episodes = lazy(() => import("./Episodes"));
+const Character = lazy(() => import("./Character"));
+const Characters = lazy(() => import("./Characters"));
+const Location = lazy(() => import("./Location"));
+const Locations = lazy(() => import("./Locations"));
 
 function App() {
   return (
@@ -42,7 +44,7 @@ function App() {
               <Route index element={<PrivateRoute><Characters /></PrivateRoute>} />
             </Route>
             <Route path="/episodes">
-              <Route path=":id" element={<PrivateRoute><Episodes /></PrivateRoute>} />
+              <Route path=":id" element={<PrivateRoute><Episode /></PrivateRoute>} />
               <Route index element={<PrivateRoute><Episodes /></PrivateRoute>} />
             </Route>
             <Route path="/locations">
