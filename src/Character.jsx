@@ -4,7 +4,7 @@ export default function Character() {
 
   
 	return (
-	  <Element link={"/characters.json"} navField={"id"}/>
+	  <Element link={"https://rickandmortyapi.com/api/character"} navField={"id"}/>
 	);
   }
   

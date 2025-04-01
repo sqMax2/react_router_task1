@@ -39,29 +39,29 @@ function App() {
         </nav>
       </header>
       <main>
-        <ErrorBoundary>
+        <>
           <AuthProvider>
             <Suspense fallback={<h1>Loading...</h1>}>
               <Routes>
-                  <Route path="/" element={<Home />} />
+                  <Route path="/" element={<ErrorBoundary><Home /></ErrorBoundary>} />
                   <Route path="/characters">
-                    <Route path=":id" element={<PrivateRoute><Character /></PrivateRoute>} />
-                    <Route index element={<PrivateRoute><Characters /></PrivateRoute>} />
+                    <Route path=":id" element={<ErrorBoundary><PrivateRoute><Character /></PrivateRoute></ErrorBoundary>} />
+                    <Route index element={<ErrorBoundary><PrivateRoute><Characters /></PrivateRoute></ErrorBoundary>} />
                   </Route>
                   <Route path="/episodes">
-                    <Route path=":id" element={<PrivateRoute><Episode /></PrivateRoute>} />
-                    <Route index element={<PrivateRoute><Episodes /></PrivateRoute>} />
+                    <Route path=":id" element={<ErrorBoundary><PrivateRoute><Episode /></PrivateRoute></ErrorBoundary>} />
+                    <Route index element={<ErrorBoundary><PrivateRoute><Episodes /></PrivateRoute></ErrorBoundary>} />
                   </Route>
                   <Route path="/locations">
-                    <Route path=":id" element={<PrivateRoute><Location /></PrivateRoute>} />
-                    <Route index element={<PrivateRoute><Locations /></PrivateRoute>} />
+                    <Route path=":id" element={<ErrorBoundary><PrivateRoute><Location /></PrivateRoute></ErrorBoundary>} />
+                    <Route index element={<ErrorBoundary><PrivateRoute><Locations /></PrivateRoute></ErrorBoundary>} />
                   </Route>
-                  <Route path="/login" element={<Login />} />
-                  <Route path="*" element={<NotFound />} />
+                  <Route path="/login" element={<ErrorBoundary><Login /></ErrorBoundary>} />
+                  <Route path="*" element={<ErrorBoundary><NotFound /></ErrorBoundary>} />
               </Routes>
             </Suspense>
           </AuthProvider>
-        </ErrorBoundary>
+        </>
       </main>
     </div>
   );

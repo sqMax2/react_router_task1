@@ -6,7 +6,7 @@ export default function Locations() {
   return (
     <div>
       <h1>Locations</h1>
-      <Category link="/location.json" displayField="name" navField="id" />
+      <Category link="https://rickandmortyapi.com/api/location" displayField="name" navField="id" />
     </div>
   );
 }

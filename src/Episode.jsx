@@ -4,7 +4,7 @@ export default function Episode() {
 
   
 	return (
-	  <Element link={"/episode.json"} navField={"id"}/>
+	  <Element link={"https://rickandmortyapi.com/api/episode"} navField={"id"}/>
 	);
   }
   
