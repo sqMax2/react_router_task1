@@ -3,6 +3,7 @@ import "./App.css";
 import { lazy, Suspense } from "react";
 import { AuthProvider } from "./context/ContextAuthProvider";
 import { PrivateRoute } from "./component/PrivateRoute";
+import ErrorBoundary from "./component/ErrorBoundary";
 
 const NotFound = lazy(() => import("./NotFound"));
 const Home = lazy(() => import("./Home"));
@@ -38,27 +39,29 @@ function App() {
         </nav>
       </header>
       <main>
-        <AuthProvider>
-          <Suspense fallback={<h1>Loading...</h1>}>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/characters">
-                  <Route path=":id" element={<PrivateRoute><Character /></PrivateRoute>} />
-                  <Route index element={<PrivateRoute><Characters /></PrivateRoute>} />
-                </Route>
-                <Route path="/episodes">
-                  <Route path=":id" element={<PrivateRoute><Episode /></PrivateRoute>} />
-                  <Route index element={<PrivateRoute><Episodes /></PrivateRoute>} />
-                </Route>
-                <Route path="/locations">
-                  <Route path=":id" element={<PrivateRoute><Location /></PrivateRoute>} />
-                  <Route index element={<PrivateRoute><Locations /></PrivateRoute>} />
-                </Route>
-                <Route path="/login" element={<Login />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </AuthProvider>
+        <ErrorBoundary>
+          <AuthProvider>
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/characters">
+                    <Route path=":id" element={<PrivateRoute><Character /></PrivateRoute>} />
+                    <Route index element={<PrivateRoute><Characters /></PrivateRoute>} />
+                  </Route>
+                  <Route path="/episodes">
+                    <Route path=":id" element={<PrivateRoute><Episode /></PrivateRoute>} />
+                    <Route index element={<PrivateRoute><Episodes /></PrivateRoute>} />
+                  </Route>
+                  <Route path="/locations">
+                    <Route path=":id" element={<PrivateRoute><Location /></PrivateRoute>} />
+                    <Route index element={<PrivateRoute><Locations /></PrivateRoute>} />
+                  </Route>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </AuthProvider>
+        </ErrorBoundary>
       </main>
     </div>
   );
