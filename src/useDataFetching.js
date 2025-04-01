@@ -6,8 +6,7 @@ export default function useDataFetching(url){
   useEffect(() => {
     fetch(url)
     .then(response => response.json())
-    .then(result => setData(result))
+    .then(result => {setData(result.results?result.results:result)})
   }, [url]);
-
   return data;
 }
