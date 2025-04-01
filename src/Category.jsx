@@ -29,14 +29,14 @@ export default function Category({ link, displayField, navField, ...rest }) {
       <Sorting sortFn={toggleSort} sortDirection={asc} />
       {data ? (
         <ul className="category-list">
-          {data.map((item) => (
+          {Array.isArray(data)?data.map((item) => (
             <li key={item[navField]}>
               <Link to={`${item[navField]}`}>
                 {item["image"]?<img src={item["image"]} alt="" />:""}
                 <div>{item[displayField]}</div>
               </Link>
             </li>
-          ))}
+          )):""}
         </ul>
       ) : (
         <div className="alert-text">Loading...</div>
