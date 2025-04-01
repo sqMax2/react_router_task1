@@ -2,6 +2,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import useDataFetching from "./useDataFetching";
+import FieldFilter from "./component/FieldFilter";
 
 export default function Element({link, navField, ...rest}) {
 	const [data, setData] = useState([]);
@@ -20,9 +21,7 @@ export default function Element({link, navField, ...rest}) {
 		<>
 			{data ? 
 				Object.entries(data).map(([key, value]) => (
-					<p key={key}>
-						{key === "image"?<img src={value} alt="" />: key === 'id'?'':`${key}: ${value?value:'none'}`}
-					</p>
+					FieldFilter({key, value})
 					))
 			 : (
 				<div className="alert-text">Loading...</div>
