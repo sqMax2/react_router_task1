@@ -1,7 +1,10 @@
+import { AuthStatus } from "./component/AuthStatus";
+
 export default function Home() {
   return (
     <>
-      <h1>Welcome!</h1>
+      <AuthStatus />
+      {/* <h1>Welcome!</h1> */}
     </>
   );
 }

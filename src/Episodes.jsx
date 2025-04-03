@@ -6,7 +6,7 @@ export default function Episodes() {
   return (
     <div>
       <h1>Episodes</h1>
-      <Category link="/episode.json" displayField="name" navField="id" />
+      <Category link="https://rickandmortyapi.com/api/episode" displayField="name" navField="id" />
     </div>
   );
 }

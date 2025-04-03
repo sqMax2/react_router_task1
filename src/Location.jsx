@@ -4,7 +4,7 @@ export default function Location() {
 
   
 	return (
-	  <Element link={"/location.json"} navField={"id"}/>
+	  <Element link={"https://rickandmortyapi.com/api/location"} navField={"id"}/>
 	);
   }
   
