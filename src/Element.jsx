@@ -6,16 +6,16 @@ import FieldFilter from "./component/FieldFilter";
 
 export default function Element({link, navField, ...rest}) {
 	const [data, setData] = useState([]);
-	const dataFetched = useDataFetching(link);
 	const params = useParams();
+	const {dataFetched, error, loading, hasMore} = useDataFetching(link + '/' + params.id);
 	const location = useLocation();
 	const navigate = useNavigate();
 	
 	useEffect(() => {
-		const tempData = Array.isArray(dataFetched)?dataFetched.find((element) => Number(element.id) === Number(params.id)):null;
-		if (typeof(tempData) === "undefined") navigate('/404', {replace: true, state: {from: location.pathname}});
+		const tempData = dataFetched[0];
+		if (error) navigate('/404', {replace: true, state: {from: location.pathname}});
 		setData(tempData);
-	  }, [dataFetched, location]);
+	  }, [dataFetched, location, error]);
 		
 	return (
 		<>

@@ -1,12 +1,11 @@
 import useDataFetching from "../useDataFetching";
 
 export default function EpisodeNumber({link}) {
-	const dataFetched = useDataFetching(link);
+	const {dataFetched, error, loading, hasMore} = useDataFetching(link);
 
 	return (
 		<>
-			<span>{dataFetched?dataFetched.episode:''}</span>
+			<span>{dataFetched[0]?dataFetched[0]?.episode:''}</span>
 		</>
 	);
-
 }
