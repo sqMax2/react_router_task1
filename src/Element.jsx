@@ -12,6 +12,7 @@ export default function Element({link, navField, ...rest}) {
 	const navigate = useNavigate();
 	
 	useEffect(() => {
+
 		const tempData = dataFetched[0];
 		if (error) navigate('/404', {replace: true, state: {from: location.pathname}});
 		setData(tempData);
